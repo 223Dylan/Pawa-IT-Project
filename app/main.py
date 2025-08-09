@@ -36,5 +36,3 @@ def analyze(payload: AnalyzeRequest) -> AnalyzeResponse:
         word_count=word_count,
         character_count=character_count,
     )
-
-

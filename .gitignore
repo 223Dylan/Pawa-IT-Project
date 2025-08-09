@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv/
+venv/
+
+# Terraform
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate*
+
+# Node/OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+

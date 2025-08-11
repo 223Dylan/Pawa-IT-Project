@@ -9,6 +9,7 @@ resource "google_project_service" "apis" {
     "cloudbuild.googleapis.com",
     "iam.googleapis.com",
     "iamcredentials.googleapis.com",
+    "serviceusage.googleapis.com",
   ])
   project = var.project_id
   service = each.key

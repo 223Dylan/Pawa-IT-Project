@@ -42,5 +42,3 @@ variable "ingress" {
     error_message = "ingress must be one of: all, internal-and-cloud-load-balancing"
   }
 }
-
-

@@ -1,5 +1,3 @@
-UNDERSTOOD
-
 ## Insight-Agent on Google Cloud (Serverless, IaC, CI/CD)
 
 This repository contains a minimal production-ready setup to deploy a Python FastAPI service (Insight-Agent) to Google Cloud Run using Terraform and GitHub Actions.
@@ -177,3 +175,31 @@ Required GitHub Actions secrets/vars:
 - Add more comprehensive tests and observability (tracing/metrics).
 
 
+### Pre-commit hooks (linting and tests)
+
+Set up git hooks to auto-lint and run tests on push:
+
+1) Install dev tools (Windows PowerShell shown):
+
+```
+python -m venv .venv
+. .\.venv\Scripts\Activate.ps1
+python -m pip install -r app/requirements.txt -r requirements-dev.txt
+```
+
+2) Install hooks:
+
+```
+pre-commit install              # installs pre-commit
+pre-commit install --hook-type pre-push  # runs pytest before push
+```
+
+3) Run on all files once (optional):
+
+```
+pre-commit run -a
+```
+
+Notes:
+- Commit-time hooks run fast auto-fixes (trailing whitespace, ruff lint/format).
+- Push-time hook runs `pytest -q`. To bypass in emergencies, use `--no-verify` (not recommended).

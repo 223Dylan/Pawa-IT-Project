@@ -1,6 +1,7 @@
+import re
+
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
-import re
 
 
 class AnalyzeRequest(BaseModel):

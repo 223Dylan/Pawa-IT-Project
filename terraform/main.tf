@@ -93,5 +93,3 @@ resource "google_cloud_run_service_iam_member" "invokers" {
   role     = "roles/run.invoker"
   member   = each.value
 }
-
-

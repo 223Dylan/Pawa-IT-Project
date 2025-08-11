@@ -1,0 +1,38 @@
+# See https://pre-commit.com for usage
+# Install locally:
+#   pip install -r requirements-dev.txt
+#   pre-commit install
+#   pre-commit install --hook-type pre-push
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+      - id: check-merge-conflict
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.5.6
+    hooks:
+      # Lint with Ruff (and auto-fix simple issues). If fixes are applied, the
+      # hook exits non-zero to prevent committing unreviewed changes.
+      - id: ruff
+        args: ["--fix", "--exit-non-zero-on-fix"]
+      # Format with Ruff formatter (Black-compatible style)
+      - id: ruff-format
+
+  # Run unit tests on pre-push to keep commit-time fast while still
+  # preventing broken code from being pushed.
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest (run unit tests)
+        entry: pytest -q
+        language: system
+        pass_filenames: false
+        stages: [push]
+
+
